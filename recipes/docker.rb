@@ -14,7 +14,7 @@ end
 
 docker_container 'prom/prometheus' do
   detach true
-  port '9090:9090'
+  port node['prometheus']['port'] 
   env '-p -v'
   volume '/prometheus.conf:/prometheus.conf'
 end
