@@ -1,0 +1,37 @@
+
+global: {
+
+  scrape_interval: "<%= node['prometheus']['scrape_interval'] %>"
+  evaluation_interval: "<%= node['prometheus']['evaluation_interval'] %>"
+
+  labels: {
+  <% node['prometheus']['labels'].each do |label| -%>
+    label: { 
+
+      name: "<%= label[0] %>"
+      value: "<%= label[1] %>"
+    }
+  <% end -%>
+  }
+}
+  
+<% node['prometheus']['rulefiles'].each do |rule| -%>
+  rule_file: "<%= rule %>"
+<% end -%>
+
+<% node['prometheus']['jobs'].each do |job| -%>
+job: {
+<% job.each do |attribute, value| -%>
+  <% if attribute == "target_group" -%> 
+    target_group: {
+    <% value.each do |target| -%>
+      target: "<%= target %>"
+    <% end -%>
+    }
+  <% elsif value -%>
+    <%= attribute %>: "<%= value %>"
+  <% end -%>
+<% end -%>
+}
+<% end -%>
+

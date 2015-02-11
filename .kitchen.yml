@@ -1,0 +1,11 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: ubuntu-14.04
+
+suites:
+  - name: default
+    run_list:
+      - recipe[prometheus-chef::docker]
