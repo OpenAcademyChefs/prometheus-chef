@@ -1,6 +1,6 @@
 prometheus-chef Cookbook
 ========================
-This cookbook installs and configures Promtheus.io
+This cookbook installs and configures Prometheus.io
 
 Requirements
 ------------
