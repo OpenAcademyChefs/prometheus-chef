@@ -3,6 +3,7 @@ default['docker']['image_cmd_timeout'] = 600
 
 default['prometheus']['install_type'] = 'docker'
 default['prometheus']['port'] = '9090:9090'
+default['prometheus']['config_path'] = "#{Chef::Config[:file_cache_path]}/prometheus"
 
 default['prometheus']['scrape_interval'] = "10s"
 default['prometheus']['evaluation_interval'] = "10s"

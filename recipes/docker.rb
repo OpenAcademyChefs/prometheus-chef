@@ -7,13 +7,13 @@ include_recipe 'docker'
 
 docker_image 'prom/prometheus' 
 
-template "/prometheus.conf" do
+template node['prometheus']['config_path'] do
   source "prometheus.conf.erb"
 end
 
 docker_container 'prom/prometheus' do
   detach true
-  port '9090:9090' 
+  port node['prometheus']['port']
   env '-p -v'
-  volume '/prometheus.conf:/prometheus.conf'
+  volume "#{node['prometheus']['config_path']}:/prometheus.conf"
 end
