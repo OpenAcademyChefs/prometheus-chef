@@ -7,7 +7,6 @@ global: {
   labels: {
   <% node['prometheus']['labels'].each do |label| -%>
     label: { 
-
       name: "<%= label[0] %>"
       value: "<%= label[1] %>"
     }

@@ -6,10 +6,6 @@
 #
 # All rights reserved - Do Not Redistribute
 
-#directory "/home/kristian/cookbooks/cookbooks"
-
-#file "/home/kristian/cookbooks/cookbooks/testfile"
-
 execute "apt-get update" do
   action :nothing
 end.run_action(:run)
@@ -25,14 +21,28 @@ git "#{Chef::Config[:file_cache_path]}/prometheus" do
   action :sync
 end
 
-template "#{Chef::Config[:file_cache_path]}/prometheus/prometheus.conf" do
-  source "prometheus.conf.erb"
-end
-
-bash 'install prometheus' do
+bash 'install_prometheus' do
   cwd "#{Chef::Config[:file_cache_path]}/prometheus"
   code <<-EOF
   make build
-  ./prometheus -config.file=prometheus.conf 
   EOF
 end
+
+template "#{Chef::Config[:file_cache_path]}/prometheus/prometheus.conf" do
+  source "prometheus.conf.erb"
+  notifies :restart, "service[prometheus]", :delayed
+end
+
+template "/etc/init.d/prometheus" do
+  source "init.erb"
+  variables ({
+    :path => "#{Chef::Config[:file_cache_path]}/prometheus/prometheus",
+    :flag => "-config.file=#{Chef::Config[:file_cache_path]}/prometheus/prometheus.conf" 
+  })
+  mode '0755'
+end
+
+service "prometheus" do
+  action :start
+end
+

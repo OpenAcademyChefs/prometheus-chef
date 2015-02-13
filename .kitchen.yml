@@ -12,4 +12,4 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[prometheus-chef::source]
+      - recipe[prometheus-chef::default]
