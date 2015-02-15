@@ -1,3 +1,30 @@
 #!/bin/bash
 
+start(){
 <%= @path %> <%= @flag %> &
+}
+
+stop(){
+	PID=$(pidof prometheus)
+	kill $PID
+}
+
+restart(){
+	stop
+	start
+}
+
+case "$1" in
+  start)
+        start
+        ;;
+  stop)
+        stop
+        ;;
+   restart)
+   		restart
+   		;;
+*)
+
+esac
+exit 0
