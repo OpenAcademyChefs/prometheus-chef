@@ -1,6 +1,6 @@
-prometheus-chef Cookbook
+prometheus-chef cookbook
 ========================
-This cookbook installs and configures Promtheus server
+This cookbook installs and configures Promtheus server.
 
 
 Requirements
@@ -24,16 +24,20 @@ Packages (when building from the source)
 
 Attributes
 ----------
-See attributes/default.rb for default values.
+See <a href="https://github.com/OpenAcademyChefs/prometheus-chef/attributes/default">attributes/default.rb</a> for default values.</a>
 
 
 Usage
 -----
-Add default recipe as a dependency and include it from inside another cookbook:
-
+Add default recipe as a dependency and include it from inside another cookbook.
+By default the recipe configures prometheus to monitor itself.
+This probably isn't what you want so you should override attributes.
+For example you could add the following to your cookbook
+```ruby
+node.override['prometheus']['scrape_interval'] = "25s"
+node.override['prometheus']['install_type'] = 'docker'
 include_recipe 'prometheus-chef::default'
-
-
+```
 Contributing
 ------------
 Currently, just make a new branch and name it 'your_name/new_feature'.
@@ -41,10 +45,10 @@ Make a pull request to develop branch.
 
 License and Authors
 -------------------
- 
+
 - Author: Kristian Järvenpää <kristian.jarvenpaa@gmail.com>
 
-Copyright (c) [2015] [Kristian Järvenpää]
+Copyright (c) 2015 Kristian Järvenpää
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
