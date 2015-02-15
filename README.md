@@ -43,17 +43,18 @@ For example you could add the following to your cookbook
 ```ruby
 node.override['prometheus']['install_type'] = 'docker'
 
-default['prometheus']['config'] = "
+node.override['prometheus']['config'] = "
 global: {
-  scrape_interval: '10s'     
-  evaluation_interval: '10s' 
+  scrape_interval: '20s'     
 }
 
-job {
-  name: "prometheus"
-  scrape_interval: "15s"
-  target_group {
-    target: "http://localhost:9090/metrics"
+job: {
+  
+  name: 'prometheus'
+  scrape_interval: '10s'
+
+  target_group: {
+    target: 'http://localhost:9090/metrics'
   }
 }
 "
