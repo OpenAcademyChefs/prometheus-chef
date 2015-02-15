@@ -1,4 +1,3 @@
-# 
 # Cookbook Name:: prometheus
 # Recipe:: source 
 #
