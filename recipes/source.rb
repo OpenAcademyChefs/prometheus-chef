@@ -10,7 +10,9 @@ execute "apt-get update" do
   action :nothing
 end.run_action(:run)
 
-%w[build-essential curl git gzip mercurial sed].each do |pkg|
+include_recipe 'build-essential::default'
+
+%w[curl git gzip mercurial sed].each do |pkg|
   package pkg
 end
 
