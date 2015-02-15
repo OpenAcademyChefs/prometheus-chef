@@ -6,9 +6,9 @@
 #
 # All rights reserved - Do Not Redistribute
 
-#execute "apt-get update" do
-#  action :nothing
-#end.run_action(:run)
+execute "apt-get update" do
+  action :nothing
+end.run_action(:run)
 
 %w[build-essential curl git gzip mercurial sed].each do |pkg|
   package pkg
