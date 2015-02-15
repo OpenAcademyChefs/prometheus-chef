@@ -26,18 +26,41 @@ Attributes
 ----------
 See <a href="https://github.com/OpenAcademyChefs/prometheus-chef/attributes/default">attributes/default.rb</a> for default values.</a>
 
+Attribute  | Description
+------------- | -------------
+['prometheus']['install_type']  | How installation is done. Either 'docker' or 'source'
+['prometheus']['port']  | What port prometheus uses
+['prometheus']['install_path'] | Where prometheus is installed.
+['prometheus']['config'] | Configurations as one big string
 
 Usage
 -----
 Add default recipe as a dependency and include it from inside another cookbook.
 By default the recipe configures prometheus to monitor itself.
-This probably isn't what you want so you should override attributes.
+This probably isn't what you want so you should override at least configuration attribute.
+
 For example you could add the following to your cookbook
 ```ruby
-node.override['prometheus']['scrape_interval'] = "25s"
 node.override['prometheus']['install_type'] = 'docker'
+
+default['prometheus']['config'] = "
+global: {
+  scrape_interval: '10s'     
+  evaluation_interval: '10s' 
+}
+
+job {
+  name: "prometheus"
+  scrape_interval: "15s"
+  target_group {
+    target: "http://localhost:9090/metrics"
+  }
+}
+"
+
 include_recipe 'prometheus-chef::default'
 ```
+
 Contributing
 ------------
 Currently, just make a new branch and name it 'your_name/new_feature'.
