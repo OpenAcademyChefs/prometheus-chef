@@ -1,9 +1,9 @@
+#
 # Cookbook Name:: prometheus
 # Recipe:: source 
 #
 # Copyright 2015, Kristian Järvenpää
-#
-# All rights reserved - Do Not Redistribute
+
 
 execute "apt-get update" do
   action :nothing

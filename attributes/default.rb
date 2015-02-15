@@ -1,6 +1,8 @@
 # 
 # Cookbook Name:: prometheus-chef
 # Attribute:: default
+#
+# Copyright 2015, Kristian Järvenpää
 
 
 default['docker']['image_cmd_timeout'] = 600
