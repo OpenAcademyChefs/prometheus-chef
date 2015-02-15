@@ -1,15 +1,25 @@
 prometheus-chef Cookbook
 ========================
-This cookbook installs and configures Promtheus.io
+This cookbook installs and configures Promtheus server
+
 
 Requirements
 ------------
 
-Platforms
-- Ubuntu 14.04
+Supported platforms
+  - Ubuntu 14.04
+  - Ubuntu 12.04
 
-#### packages
-- docker - if using docker to install prometheus
+Cookbooks
+ - docker cookbook
+ - build-essential 
+
+Packages (when building from the source)
+ - curl 
+ - git
+ - gzip
+ - mercurial
+ - sed
 
 Attributes
 ----------
