@@ -9,13 +9,13 @@ node.override['prometheus']['install_type'] = 'docker'
 
 node.override['prometheus']['config'] = "
 global: {
-  scrape_interval: '20s'     
+  scrape_interval: '15s'     
 }
 
 job: {
   
   name: 'prometheus'
-  scrape_interval: '10s'
+  scrape_interval: '5s'
 
   target_group: {
     target: 'http://localhost:9090/metrics'
