@@ -2,7 +2,6 @@ prometheus-chef cookbook
 ========================
 This cookbook installs and configures Promtheus server.
 
-
 Requirements
 ------------
 
