@@ -10,6 +10,7 @@ default['docker']['image_cmd_timeout'] = 600
 default['prometheus']['install_type'] = 'source'
 default['prometheus']['port'] = '9090:9090'
 default['prometheus']['install_path'] = "#{Chef::Config[:file_cache_path]}/prometheus"
+default['prometheus']['config_path'] = "#{Chef::Config[:file_cache_path]}/prometheus.conf"
 
 default['prometheus']['config'] = "
 global: {
