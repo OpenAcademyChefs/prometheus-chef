@@ -5,6 +5,8 @@ This cookbook installs and configures Promtheus server.
 Requirements
 ------------
 
+Note that if you want to use docker it requires your that your kernel version is at least 3.8. This cookbook doesn't update your kernel.
+
 Supported platforms
   - Ubuntu 14.04
   - Ubuntu 12.04
