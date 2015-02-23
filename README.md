@@ -10,6 +10,8 @@ Note that if you want to use docker it requires your that your kernel version is
 Supported platforms
   - Ubuntu 14.04
   - Ubuntu 12.04
+  - CentOS 6.6
+  - Debian 7
 
 Cookbooks
  - docker cookbook
