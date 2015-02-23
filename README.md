@@ -21,6 +21,7 @@ Packages (when building from the source)
  - gzip
  - mercurial
  - sed
+ - vim-common
 
 
 Attributes
