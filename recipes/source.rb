@@ -14,13 +14,9 @@ end
 
 include_recipe 'build-essential::default'
 
-%w[curl git gzip mercurial sed].each do |pkg|
+#vim-common to get xxd
+%w[curl git gzip mercurial sed vim-common].each do |pkg|
   package pkg
-end
-
-#To install xxd. Is there a better way?
-if node.platform_family?('rhel')
-  package "vim-common"
 end
 
 directory node['prometheus']['install_path']
