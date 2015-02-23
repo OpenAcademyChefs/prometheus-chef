@@ -5,14 +5,22 @@
 # Copyright 2015, Kristian Järvenpää
 
 
-execute "apt-get update" do
-  action :nothing
-end.run_action(:run)
+#TODO remove from release
+if node.platform_family?('debian') 
+  execute "apt-get update" do
+     action :nothing
+  end.run_action(:run)
+end
 
 include_recipe 'build-essential::default'
 
 %w[curl git gzip mercurial sed].each do |pkg|
   package pkg
+end
+
+#To install xxd. Is there a better way?
+if node.platform_family?('rhel')
+  package "vim-common"
 end
 
 directory node['prometheus']['install_path']
