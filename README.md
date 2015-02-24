@@ -34,6 +34,7 @@ Attribute  | Description
 ['prometheus']['port']  | What port prometheus uses
 ['prometheus']['install_path'] | Where prometheus is installed.
 ['prometheus']['config'] | Configurations as one big string
+['prometheus'][gomaxproc'] | Max number of threads used. 
 
 Usage
 -----
