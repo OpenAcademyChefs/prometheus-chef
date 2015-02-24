@@ -42,7 +42,8 @@ template "/etc/init.d/prometheus" do
   source "init.erb"
   variables ({
     :path => "#{node['prometheus']['install_path']}/prometheus",
-    :flag => "-config.file=#{node['prometheus']['install_path']}/prometheus.conf" 
+    :flag => "-config.file=#{node['prometheus']['install_path']}/prometheus.conf",
+    :gomaxproc => node['prometheus']['gomaxproc'] 
   })
   mode '0755'
 end
